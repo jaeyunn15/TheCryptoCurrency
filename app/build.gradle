@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk Versions.COMPILE_SDK_VERSION
 
     defaultConfig {
         applicationId "com.project.cryptocurrency"
@@ -56,6 +56,9 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':data')
+    implementation project(path: ':domain')
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation AndroidX.CORE_KTX
