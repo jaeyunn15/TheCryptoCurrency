@@ -1,0 +1,143 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.project.cryptocurrency"
+        minSdkVersion Versions.MIN_SDK_VERSION
+        targetSdkVersion Versions.TARGET_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'META-INF/gradle/incremental.annotation.processors'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation AndroidX.CORE_KTX
+    implementation AndroidX.APP_COMPAT
+    implementation AndroidX.LEGACY_SUPPORT_V4
+
+    //LifeCycle
+    implementation AndroidX.LIFECYCLE_COMMON
+    implementation AndroidX.LIFECYCLE_LIVEDATA_KTX
+    implementation AndroidX.LIFECYCLE_VIEWMODEL_KTX
+    implementation AndroidX.LIFECYCLE_RUNTIME
+    implementation AndroidX.LIFECYCLE_EXT
+
+    //room
+    implementation AndroidX.ROOM_KTX
+    implementation AndroidX.ROOM_RUNTIME
+    implementation AndroidX.ROOM_RXJAVA2
+    kapt AndroidX.ROOM_COMPILER
+    testImplementation AndroidX.ROOM_TESTING
+    kapt Libraries.SQLITE_JDBC
+
+    //viewpager2
+    implementation AndroidX.VIEWPAGER2
+
+    //MotionLayout used
+    implementation AndroidX.CONSTRAINTLAYOUT
+
+    //preference
+    implementation AndroidX.PREFERENCE
+
+    //RecyclerView
+    implementation AndroidX.RECYCLERVIEW
+    implementation AndroidX.RECYCLERVIEW_SELECTION
+
+    //Paging
+    implementation AndroidX.PAGING
+    implementation AndroidX.PAGING_TEST
+
+
+    /*-----*/
+
+
+    //library
+    implementation Google.MATERIAL
+
+    /*-----*/
+
+
+    //kotlin
+    implementation Kotlin.KOTLIN_STDLIB
+
+    //Coroutines
+    implementation Kotlin.COROUTINES_ANDROID
+
+    /*-----*/
+
+    //retrofit
+    implementation Libraries.RETROFIT
+    implementation Libraries.RETROFIT_CONVERTER_GSON
+    implementation Libraries.RETROFIT_ADAPTER_RXJAVA2
+
+    //okHttp
+    implementation Libraries.OKHTTP
+    implementation Libraries.OKHTTP_LOGGING_INTERCEPTOR
+    implementation Libraries.OKHTTP_URLCONNECTION
+
+    //rx android
+    implementation Libraries.RXJAVA2_RXANDROID
+    implementation Libraries.RXJAVA2_RXJAVA
+
+    //glide
+    implementation Libraries.GLIDE
+    implementation Libraries.GLIDE_OKHTTP_INTERCEPTOR
+    kapt Libraries.KAPT_GLIDE_COMPILER
+
+    //coil
+    implementation Libraries.COIL
+    implementation Libraries.COIL_SVG
+
+    //stecho
+    implementation Libraries.STETHO
+    implementation Libraries.STETHO_OKHTTP
+
+    //hilt
+    implementation Google.HILT_ANDROID
+    implementation Google.HILT_ANDROID_COMPILER
+    implementation AndroidX.HILT_VIEWMODEL
+    kapt AndroidX.KAPT_HILT
+
+    /*-----*/
+
+    testImplementation UnitTest.JUNIT
+    androidTestImplementation AndroidTest.ANDROID_JUNIT
+    androidTestImplementation AndroidTest.ESPRESSO_CORE
+}
