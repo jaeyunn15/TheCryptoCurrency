@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -29,7 +30,16 @@ android {
 }
 
 dependencies {
+    implementation AndroidX.CORE_KTX
+
     implementation AndroidX.PAGING_TEST
+
+
+    //kotlin
+    implementation Kotlin.KOTLIN_STDLIB
+
+    //Coroutines
+    implementation Kotlin.COROUTINES_ANDROID
 
     //retrofit
     implementation Libraries.RETROFIT
@@ -40,10 +50,10 @@ dependencies {
     implementation Libraries.OKHTTP
     implementation Libraries.OKHTTP_LOGGING_INTERCEPTOR
     implementation Libraries.OKHTTP_URLCONNECTION
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //hilt
+    implementation Google.HILT_ANDROID
+    implementation Google.HILT_ANDROID_COMPILER
+    //implementation AndroidX.HILT_VIEWMODEL
+    kapt AndroidX.KAPT_HILT
 }

@@ -31,8 +31,18 @@ android {
 
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", properties.getProperty('BASE_URL', "\"\"")
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kapt {
+        javacOptions {
+            option("-Adagger.fastInit=ENABLED")
+            option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
         }
     }
 
@@ -72,12 +82,6 @@ dependencies {
     implementation AndroidX.LIFECYCLE_RUNTIME
     implementation AndroidX.LIFECYCLE_EXT
 
-    //room
-    implementation AndroidX.ROOM_KTX
-    implementation AndroidX.ROOM_RUNTIME
-    implementation AndroidX.ROOM_RXJAVA2
-    kapt AndroidX.ROOM_COMPILER
-    testImplementation AndroidX.ROOM_TESTING
     kapt Libraries.SQLITE_JDBC
 
     //viewpager2
@@ -145,7 +149,7 @@ dependencies {
     //hilt
     implementation Google.HILT_ANDROID
     implementation Google.HILT_ANDROID_COMPILER
-    implementation AndroidX.HILT_VIEWMODEL
+    //implementation AndroidX.HILT_VIEWMODEL
     kapt AndroidX.KAPT_HILT
 
     /*-----*/

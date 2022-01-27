@@ -6,7 +6,7 @@ object Versions {
     //build
     const val BUILD_GRADLE = "4.2.1"
     const val COMPILE_SDK_VERSION = 31
-    const val BUILD_TOOLS_VERSION = "31.0.3"
+    const val BUILD_TOOLS_VERSION = "31.0.0"
     const val MIN_SDK_VERSION = 23
     const val TARGET_SDK_VERSION = 31
 
@@ -24,8 +24,8 @@ object Versions {
     const val RECYCLERVIEW = "1.2.1"
     const val RECYCLERVIEW_SELECTION = "1.2.0-alpha01"
     const val PAGING = "3.0.0"
-    const val HILT_VIEWMODEL = "1.0.0-alpha03"
-    const val KAPT_HILT = "1.0.0"
+    const val HILT_VIEWMODEL = "2.28-alpha"
+    const val KAPT_HILT = "1.0.0-alpha02"
 
     //google
     const val HILT = "2.38.1"

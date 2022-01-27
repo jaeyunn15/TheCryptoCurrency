@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface ExchangeService {
 
-    @GET("v3/exchanges")
+    @GET("exchanges")
     suspend fun getAllExchange(
         @Query("per_page") pageSize : Int
     ): ArrayList<ExchangeItemResponse>

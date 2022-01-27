@@ -4,8 +4,9 @@ import com.project.cryptocurrency.data.datasource.ExchangeDataSource
 import com.project.cryptocurrency.data.mapper.toEntity
 import com.project.cryptocurrency.domain.entity.CoinExchangeInfo
 import com.project.cryptocurrency.domain.repository.ExchangeRepository
+import javax.inject.Inject
 
-class ExchangeRepositoryImpl(
+class ExchangeRepositoryImpl @Inject constructor(
     private val exchangeDataSource: ExchangeDataSource
 ) : ExchangeRepository{
 

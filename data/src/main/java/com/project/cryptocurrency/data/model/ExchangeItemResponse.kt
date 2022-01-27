@@ -4,38 +4,38 @@ import com.google.gson.annotations.SerializedName
 
 data class ExchangeItemResponse(
     @SerializedName("country")
-    val country: String,
+    val country: String?,
 
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @SerializedName("has_trading_incentive")
-    val hasTradingIncentive: Boolean,
+    val hasTradingIncentive: Boolean?,
 
     @SerializedName("id")
     val id: String,
 
     @SerializedName("image")
-    val image: String,
+    val image: String?,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("trade_volume_24h_btc")
-    val tradeVolume24hBtc: Double,
+    val tradeVolume24hBtc: Double?,
 
     @SerializedName("trade_volume_24h_btc_normalized")
-    val tradeVolume24hBtcNormalized: Double,
+    val tradeVolume24hBtcNormalized: Double?,
 
     @SerializedName("trust_score")
-    val trustScore: Int,
+    val trustScore: Int?,
 
     @SerializedName("trust_score_rank")
-    val trustScoreRank: Int,
+    val trustScoreRank: Int?,
 
     @SerializedName("url")
-    val url: String,
+    val url: String?,
 
     @SerializedName("year_established")
-    val yearEstablished: Int
+    val yearEstablished: Int?
 )
