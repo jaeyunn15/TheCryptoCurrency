@@ -3,7 +3,6 @@ package com.project.cryptocurrency.data.mapper
 import com.project.cryptocurrency.data.model.ExchangeItemResponse
 import com.project.cryptocurrency.domain.entity.CoinExchangeInfo
 
-
 internal fun ExchangeItemResponse.toEntity(): CoinExchangeInfo {
     return CoinExchangeInfo(
         country = this.country,
@@ -19,4 +18,8 @@ internal fun ExchangeItemResponse.toEntity(): CoinExchangeInfo {
         url = this.url,
         establishedYear = this.yearEstablished
     )
+}
+
+internal fun ArrayList<ExchangeItemResponse>.mapToEntity(): ArrayList<CoinExchangeInfo> {
+    return this.map { it.toEntity() }.toCollection(arrayListOf())
 }
