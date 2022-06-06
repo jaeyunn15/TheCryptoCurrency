@@ -35,7 +35,7 @@ class ListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeMaterial3Theme (darkTheme = false) {
+            ComposeMaterial3Theme (darkTheme = true) {
                 ListContentView {
                     moveToMainPage()
                 }

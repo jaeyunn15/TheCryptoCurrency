@@ -6,7 +6,7 @@ import com.project.cryptocurrency.domain.usecase.base.UseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetAllExchanges @Inject constructor(
+class GetAllExchangesUseCase @Inject constructor(
     private val exchangeRepository: ExchangeRepository
 ) : UseCase<Int, Flow<ArrayList<CoinExchangeInfo>>>() {
 

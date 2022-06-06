@@ -1,5 +1,7 @@
 package com.project.cryptocurrency.di
 
+import com.project.cryptocurrency.data.datasource.CurrencyDataSource
+import com.project.cryptocurrency.data.datasource.CurrencyDataSourceImpl
 import com.project.cryptocurrency.data.datasource.ExchangeDataSource
 import com.project.cryptocurrency.data.datasource.ExchangeDataSourceImpl
 import com.project.cryptocurrency.data.service.ExchangeService
@@ -17,6 +19,12 @@ object DataSourceModule {
     @Singleton
     fun provideExchangeDataSource(service: ExchangeService): ExchangeDataSource {
         return ExchangeDataSourceImpl(service)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCurrencyDataSource(service: ExchangeService): CurrencyDataSource {
+        return CurrencyDataSourceImpl(service)
     }
 
 }

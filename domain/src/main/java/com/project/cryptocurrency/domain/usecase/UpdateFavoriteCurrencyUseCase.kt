@@ -5,7 +5,7 @@ import com.project.cryptocurrency.domain.repository.ExchangeRepository
 import com.project.cryptocurrency.domain.usecase.base.UseCase
 import javax.inject.Inject
 
-class UpdateFavoriteCurrency @Inject constructor(
+class UpdateFavoriteCurrencyUseCase @Inject constructor(
     private val repository: ExchangeRepository
 ) : UseCase<CoinExchangeInfo, Unit>() {
 

@@ -14,6 +14,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.project.cryptocurrency.domain.entity.CoinExchangeInfo
@@ -44,7 +45,8 @@ fun ListContentView(
                             style = MaterialTheme.typography.labelMedium
                         )
                     }
-                }
+                },
+                backgroundColor = Color.Black
             )
         },
         content = {
@@ -80,7 +82,7 @@ fun VerticalListView(data: List<CoinExchangeInfo>, onClick: (id: String) -> Unit
             items = list,
             itemContent = { item ->
                 VerticalListItemSmall(item = item, onClick = onClick, onLikeClick = onLikeClick)
-                ListItemDivider()
+                //ListItemDivider()
             }
         )
     }

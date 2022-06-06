@@ -92,6 +92,8 @@ dependencies {
     implementation AndroidX.LIFECYCLE_RUNTIME
     implementation AndroidX.LIFECYCLE_EXT
 
+    implementation "androidx.preference:preference-ktx:1.1.1"
+
     implementation "androidx.compose.ui:ui:$compose_version"
     //implementation "androidx.compose.material:material:$compose_version"
 

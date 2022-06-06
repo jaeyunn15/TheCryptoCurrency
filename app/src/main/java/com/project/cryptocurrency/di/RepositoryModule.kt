@@ -1,8 +1,11 @@
 package com.project.cryptocurrency.di
 
+import com.project.cryptocurrency.data.datasource.CurrencyDataSource
 import com.project.cryptocurrency.data.datasource.ExchangeDataSource
 import com.project.cryptocurrency.data.datasource.local.LocalDataSource
+import com.project.cryptocurrency.data.repository.CurrencyRepositoryImpl
 import com.project.cryptocurrency.data.repository.ExchangeRepositoryImpl
+import com.project.cryptocurrency.domain.repository.CurrencyRepository
 import com.project.cryptocurrency.domain.repository.ExchangeRepository
 import dagger.Module
 import dagger.Provides
@@ -23,6 +26,16 @@ object RepositoryModule {
         return ExchangeRepositoryImpl(
             exchangeDataSource = exchangeDataSource,
             localDataSource = localDataSource
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideCurrencyRepository(
+        currencyDataSource: CurrencyDataSource
+    ): CurrencyRepository {
+        return CurrencyRepositoryImpl(
+            currencyDataSource
         )
     }
 
