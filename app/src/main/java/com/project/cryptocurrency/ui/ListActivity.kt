@@ -23,6 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.project.cryptocurrency.R
 import com.project.cryptocurrency.domain.entity.CoinExchangeInfo
+import com.project.cryptocurrency.ui.intent.MainIntent
 import com.project.cryptocurrency.ui.ui.ListContentView
 import com.project.cryptocurrency.ui.ui.item.VerticalListItemSmall
 import com.project.cryptocurrency.ui.ui.theme.ComposeMaterial3Theme
@@ -36,13 +37,17 @@ class ListActivity : ComponentActivity() {
         setContent {
             ComposeMaterial3Theme (darkTheme = false) {
                 ListContentView {
-                    startActivity(
-                        Intent(this, MainActivity::class.java)
-                            .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    )
+                    moveToMainPage()
                 }
             }
         }
+    }
+
+    private fun moveToMainPage() {
+        startActivity(
+            Intent(this, MainActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        )
     }
 
     companion object {

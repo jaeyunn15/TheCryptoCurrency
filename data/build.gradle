@@ -58,4 +58,6 @@ dependencies {
     implementation Google.HILT_ANDROID_COMPILER
     //implementation AndroidX.HILT_VIEWMODEL
     kapt AndroidX.KAPT_HILT
+
+    implementation "androidx.preference:preference-ktx:1.1.1"
 }

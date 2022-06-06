@@ -13,9 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -30,7 +28,8 @@ import com.project.cryptocurrency.ui.ui.theme.ComposeMaterial3Theme
 fun VerticalListItemSmall(
     item: CoinExchangeInfo,
     modifier: Modifier = Modifier,
-    onClick: (id: String) -> Unit
+    onClick: (id: String) -> Unit,
+    onLikeClick: (data: CoinExchangeInfo) -> Unit
 ) {
     val typography = MaterialTheme.typography
     Row(
@@ -38,12 +37,22 @@ fun VerticalListItemSmall(
             .clickable(onClick = {
                 onClick.invoke(item.coinId)
             })
-            .padding(16.dp)
+            .padding(start = 8.dp, end = 8.dp)
     ) {
-        ItemImage(
-            item = item,
-            modifier = Modifier.padding(end = 16.dp)
-        )
+        Column(
+            modifier = Modifier
+                .weight(0.15f)
+                .padding(top = 8.dp, start = 8.dp, bottom = 8.dp, end = 4.dp)
+
+        ) {
+            item.trustScoreRank?.let {
+                Text(
+                    text = it.toString(),
+                    style = typography.bodyLarge
+                )
+            }
+        }
+        ItemImage(item = item)
         Column(modifier = Modifier.weight(1f)) {
             item.coinName?.let {
                 Text(
@@ -51,28 +60,28 @@ fun VerticalListItemSmall(
                     style = typography.titleMedium
                 )
             }
-            item.trustScoreRank?.let {
-                Text(
-                    text = it.toString(),
-                    style = typography.bodyMedium
-                )
-            }
-
         }
-        FavIcon(modifier)
+        FavIcon(modifier, item, onLikeClick)
     }
 }
 
 @Composable
-fun FavIcon(modifier: Modifier = Modifier) {
-    val isFavourite = remember {
-        mutableStateOf(true)
-    }
+fun FavIcon(
+    modifier: Modifier = Modifier,
+    item: CoinExchangeInfo,
+    onLikeClick: (data: CoinExchangeInfo) -> Unit
+) {
+    var isFavorit by remember { mutableStateOf(item.isFavorite) }
+
     IconToggleButton(
-        checked = isFavourite.value,
-        onCheckedChange = { isFavourite.value = !isFavourite.value }
+        checked = isFavorit,
+        onCheckedChange = {
+            isFavorit = !isFavorit
+            item.isFavorite = isFavorit
+            onLikeClick.invoke(item)
+        }
     ) {
-        if (isFavourite.value) {
+        if (isFavorit) {
             Icon(
                 imageVector = Icons.Filled.Favorite,
                 contentDescription = null,
@@ -95,9 +104,9 @@ fun ItemImage(item: CoinExchangeInfo, modifier: Modifier = Modifier) {
         contentScale = ContentScale.Fit,
         contentDescription = null,
         modifier = modifier
-            .size(80.dp, 80.dp)
+            .padding(end = 6.dp, top = 4.dp)
+            .size(25.dp, 25.dp)
             .clip(androidx.compose.material.MaterialTheme.shapes.medium)
-
     )
 }
 
@@ -114,13 +123,11 @@ fun PreviewSmallListItem() {
         tradeVolume24h = 0.0,
         tradeVolume24hNormalized = 0.0,
         trustScore = 80,
-        trustScoreRank = 3,
+        trustScoreRank = 31,
         url = "",
         establishedYear = 0
     )
     ComposeMaterial3Theme {
-        VerticalListItemSmall(item = coinInfo) {
 
-        }
     }
 }

@@ -12,7 +12,8 @@ data class CoinExchangeInfo(
     val trustScore: Int?,
     val trustScoreRank: Int?,
     val url: String?,
-    val establishedYear: Int?
+    val establishedYear: Int?,
+    var isFavorite: Boolean = false
 ) {
     companion object {
         fun getEmptyData(): CoinExchangeInfo {

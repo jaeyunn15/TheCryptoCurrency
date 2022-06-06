@@ -56,4 +56,7 @@ dependencies {
     implementation Google.HILT_ANDROID_COMPILER
     //implementation AndroidX.HILT_VIEWMODEL
     kapt AndroidX.KAPT_HILT
+
+    // Alternatively - use the following artifact without an Android dependency.
+    implementation "androidx.preference:preference-ktx:1.1.1"
 }
