@@ -1,4 +1,4 @@
-package com.project.cryptocurrency.ui
+package com.project.cryptocurrency.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
